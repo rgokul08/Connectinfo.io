@@ -13,9 +13,9 @@
  */
 import emailjs from '@emailjs/browser'
 
-const SERVICE_ID = 'service_6kl61yd'
+const SERVICE_ID = 'service_6ul61yd'
 const TEMPLATE_ID = 'template_g85vu9o'
-const PUBLIC_KEY = '0oBwtkvUnOKSPnyzB'
+const PUBLIC_KEY = '0oBwtkvUnOKSPiyzB'
 
 export function isEmailConfigured() {
   return Boolean(SERVICE_ID && TEMPLATE_ID && PUBLIC_KEY)
