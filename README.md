@@ -85,8 +85,23 @@ src/
 
 ## Deploy to Vercel
 
+The repo includes `vercel.json` (Vite preset + SPA rewrite to `/index.html`,
+so refreshing deep routes like `/dashboard` or `/contacts/:id` never 404s).
+
+**Option A — Git (recommended)**
 ```bash
-npm i -g vercel && vercel
-# Build command: npm run build · Output dir: dist · Framework: Vite
+git init && git add -A && git commit -m "Connectinfo.com"
+# push to GitHub/GitLab/Bitbucket, then in Vercel:
+#   Add New → Project → Import repo → Deploy (framework auto-detected: Vite)
 ```
-Add the three `VITE_EMAILJS_*` values as environment variables in Vercel → Settings → Environment Variables.
+
+**Option B — CLI**
+```bash
+npm i -g vercel
+vercel          # preview deploy
+vercel --prod   # production deploy
+```
+
+Then add the three `VITE_EMAILJS_*` values in
+Vercel → Project → Settings → Environment Variables, and redeploy
+(Vercel bakes `VITE_*` vars into the build, so apply to Production + Preview).
