@@ -1,0 +1,96 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-slate-50 text-slate-800 antialiased dark:bg-slate-950 dark:text-slate-200;
+  }
+  ::selection {
+    @apply bg-ocean/20 text-ocean-900 dark:text-white;
+  }
+  /* Accessible focus defaults */
+  :focus-visible {
+    @apply outline-none ring-2 ring-ocean/70 ring-offset-2 ring-offset-white dark:ring-offset-slate-950 rounded-lg;
+  }
+}
+
+@layer components {
+  /* ---------- Buttons ---------- */
+  .btn {
+    @apply inline-flex select-none items-center justify-center gap-2 rounded-xl font-semibold transition-all duration-200 active:scale-[0.97] disabled:pointer-events-none disabled:opacity-60;
+  }
+  .btn-md { @apply px-4 py-2.5 text-sm; }
+  .btn-lg { @apply px-6 py-3 text-base; }
+  .btn-sm { @apply px-3 py-1.5 text-xs; }
+  .btn-primary { @apply btn btn-md bg-ocean text-white shadow-soft hover:bg-ocean-dark; }
+  .btn-coral { @apply btn btn-md bg-coral text-white shadow-soft hover:bg-coral-dark; }
+  .btn-teal { @apply btn btn-md bg-teal text-white shadow-soft hover:bg-teal-dark; }
+  .btn-gold { @apply btn btn-md bg-gold text-slate-900 shadow-soft hover:bg-gold-dark; }
+  .btn-outline {
+    @apply btn btn-md border border-slate-300 bg-white text-slate-700 hover:border-ocean hover:text-ocean dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:border-ocean-light dark:hover:text-ocean-light;
+  }
+  .btn-ghost { @apply btn btn-md text-slate-600 hover:bg-slate-200/70 dark:text-slate-300 dark:hover:bg-slate-800; }
+  .btn-danger { @apply btn btn-md bg-red-500 text-white shadow-soft hover:bg-red-600; }
+
+  .icon-btn {
+    @apply inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl text-slate-500 transition hover:bg-slate-200/70 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-white;
+  }
+
+  /* ---------- Surfaces ---------- */
+  .card {
+    @apply rounded-2xl border border-slate-200/80 bg-white shadow-soft dark:border-slate-800 dark:bg-slate-900/70;
+  }
+  .glass {
+    @apply border border-white/40 bg-white/70 backdrop-blur-xl dark:border-slate-700/60 dark:bg-slate-900/60;
+  }
+  .input {
+    @apply w-full rounded-xl border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-slate-900 placeholder-slate-400 transition focus:border-ocean focus:outline-none focus:ring-2 focus:ring-ocean/50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100 dark:placeholder-slate-500;
+  }
+  .input-error { @apply border-red-400 focus:border-red-500 focus:ring-red-400/40 dark:border-red-500; }
+  .label { @apply mb-1.5 block text-sm font-medium text-slate-700 dark:text-slate-300; }
+  .chip { @apply inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-xs font-medium; }
+
+  /* ---------- Skeleton ---------- */
+  .skeleton {
+    @apply relative overflow-hidden rounded-xl bg-slate-200/80 dark:bg-slate-800/80;
+  }
+  .skeleton::after {
+    content: '';
+    @apply absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/50 to-transparent dark:via-white/10;
+    animation: shimmer 1.4s infinite;
+  }
+
+  /* ---------- Nav link ---------- */
+  .nav-item {
+    @apply flex items-center gap-3 rounded-xl px-3.5 py-2.5 text-sm font-medium text-slate-600 transition hover:bg-slate-200/60 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-slate-800/80 dark:hover:text-white;
+  }
+  .nav-item.active {
+    @apply bg-ocean/10 text-ocean dark:bg-ocean/15 dark:text-ocean-light;
+  }
+
+  /* ---------- 3D tilt card ---------- */
+  .tilt-card {
+    transform-style: preserve-3d;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    will-change: transform;
+  }
+
+  /* ---------- Scrollbars ---------- */
+  .nice-scroll::-webkit-scrollbar { width: 6px; height: 6px; }
+  .nice-scroll::-webkit-scrollbar-thumb { @apply rounded-full bg-slate-300 dark:bg-slate-700; }
+  .nice-scroll::-webkit-scrollbar-track { background: transparent; }
+}
+
+/* Respect reduced-motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001s !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001s !important;
+    scroll-behavior: auto !important;
+  }
+}
